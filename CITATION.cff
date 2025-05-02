@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite as below:"
+title: "Photolithography Overlay Map Generation with Implicit Knowledge Distillation Diffusion Transformer (IKDDiT)"
+authors:
+  - family-names: "Anonymous"
+    given-names: ""
+date-released: "2025-05-01"
+version: "1.0.0"
+doi: ""
+url: "https://github.com/YourRepo/IKDDiT-Github-Repository"

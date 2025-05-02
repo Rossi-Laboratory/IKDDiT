@@ -1,0 +1,17 @@
+name: ikddit
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.9
+  - pytorch>=1.10.0
+  - torchvision
+  - numpy
+  - pyyaml
+  - tqdm
+  - matplotlib
+  - tensorboard
+  - pillow
+  - pip
+  - pip:
+    - einops
