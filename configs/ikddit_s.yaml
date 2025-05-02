@@ -7,7 +7,7 @@ lambda1: 1.0
 lambda2: 0.1
 hidden_dim: 512
 num_heads: 8
-num_layers: 12  # DiTBlock 重複層數
+num_layers: 12  # num. of DiTBlock
 attn_dropout: 0.1
 patch_size: 16
 channels: 3
