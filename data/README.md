@@ -1,13 +1,29 @@
+
 # MPOM Dataset
 
-本资料集包含光刻 Overlay Map 数据，每个样本包括：
-- `overlay_prev.png`: 上一轮 overlay map
-- `logs.json`: 设备日志信息
-- `id.txt`: 设备 ID
+This dataset contains photolithography overlay map data. Each sample includes:
+- `overlay_prev.png`: Previous overlay map image
+- `logs.json`: Equipment log information
+- `id.txt`: Equipment ID
 
-## 使用方法
-1. 执行下载脚本：
-   ```bash
-   bash download_mpom.sh
-   ```
-2. 在 `src/train.py` 或 `src/inference.py` 中指定 `--data_dir data/mpom`。
+## How to Use
+
+1. Run the download script:
+```bash
+bash download_mpom.sh
+```
+
+2. In `src/train.py` or `src/inference.py`, specify the data path:
+```bash
+--data_dir data/mpom
+```
+
+3. Directory structure after extraction:
+```
+data/mpom/
+├── overlay_prev.png     # Overlay map image from previous lithography layer
+├── logs.json            # Corresponding equipment logs
+├── id.txt               # Equipment ID (categorical)
+```
+
+This dataset is designed for multimodal diffusion training and includes real-world metadata from photolithography tools.
