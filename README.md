@@ -1,39 +1,40 @@
+
 # Implicit Knowledge Distillation Diffusion Transformer (IKDDiT)
 
-本專案實現 IKDDiT：基於隱式鑑別器的 Teacher–Student Diffusion Transformer，用於光刻 Overlay Map 生成，具備計算加速優勢。
+This project implements IKDDiT: a Teacher–Student Diffusion Transformer based on an implicit discriminator, designed for photolithography overlay map generation with computational acceleration advantages.
 
-## 核心特點
-- **Implicit Discriminator**：訓練階段，Teacher DiT 查看完整 image patch；Student DiT 僅見可見 patch (其餘 masked)，通過隱式鑑別器對齊 token。
-- **Inference 加速**：只運行 Student DiT，對少量 non-masked patch 進行去噪與重建，顯著縮短推理時間。
-- **Unified Contrastive Embedding**：將影像、設備 log 與 ID 條碼嵌入同一空間，並以 InfoNCE loss 對齊。
-- **Gated Cross-Attention**：融合條件 token 與 latent map，提高重建品質。
+## Key Features
+- **Implicit Discriminator**: During training, the Teacher DiT sees all image patches, while the Student DiT sees only visible patches (others are masked), with token alignment guided by an implicit discriminator.
+- **Inference Acceleration**: Only the Student DiT is used during inference, denoising and reconstructing a small number of non-masked patches, significantly reducing inference time.
+- **Unified Contrastive Embedding**: Embeds image data, equipment logs, and barcode IDs into a shared space, aligned via InfoNCE loss.
+- **Gated Cross-Attention**: Fuses condition tokens with latent maps to improve reconstruction quality.
 
 ## Repository Structure
-詳見目錄結構。
+See the directory tree for full structure details.
 
 ## Installation
 ```bash
 conda env create -f environment.yml
 conda activate ikddit
-``` 
-或
+```
+or
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Training
-1. 下載資料：
+1. Download the dataset:
    ```bash
    cd data && bash download_mpom.sh && cd ..
    ```
-2. 訓練模型（Teacher + Student + Implicit Discriminator）：
+2. Train the model (Teacher + Student + Implicit Discriminator):
    ```bash
    python src/train.py --config configs/ikddit_s.yaml
    ```
 
 ## Hyperparameters
-- `mask_ratio` (float): percentage of patches to mask during student encoding (default: 0.5).  
-- Ablation study on `mask_ratio` (FID-15k):
+- `mask_ratio` (float): percentage of patches masked during Student encoding (default: 0.5).  
+- Ablation study results for `mask_ratio` (FID-15k):
 
   | Mask Ratio | FID-15k |
   | ---------- | ------- |
@@ -42,30 +43,30 @@ pip install -r requirements.txt
   | 50%        | 24.66   |
   | 70%        | 123.85  |
 
-  Optimal performance achieved at 50% mask ratio.
+  Optimal performance is achieved at a 50% mask ratio.
 
 ## Loss Function
 - **Eq.8:** L_IKDDiT = L_DSM + λ1 * L_MAE + λ2 * L_D
 
-三項 loss：
-1. DSM: Denoising Score Matching。
-2. MAE: Mean Absolute Error (L1)，負責重建誤差。
-3. Discriminator Loss: 隱式鑑別器對齊訊號。
+Loss components:
+1. DSM: Denoising Score Matching.
+2. MAE: Mean Absolute Error (L1), for reconstruction error.
+3. Discriminator Loss: Implicit discriminator-guided alignment.
 
-超參數：
-- `lambda1` (float): MAE 權重。
-- `lambda2` (float): Discriminator 權重。
+Hyperparameters:
+- `lambda1` (float): Weight for MAE.
+- `lambda2` (float): Weight for discriminator.
 
-請在 configs/ikddit_s.yaml 中設定以上參數。
+All parameters can be set in `configs/ikddit_s.yaml`.
 
 ## Inference
-只啟動 Student DiT Encoder + Decoder：
+Run only the Student DiT Encoder + Decoder:
 ```bash
 python src/inference.py --model checkpoints/student_ikddit.pth --mask_ratio 0.5
 ```
 
 ## Visualization
-- `notebooks/demo.ipynb`：顯示 training 中的 alignment loss、inference 中 σ heatmap 與加速比。
+- `notebooks/demo.ipynb`: Demonstrates alignment loss during training, σ heatmap during inference, and speed-up benchmarks.
 
 ## Citation
 ```bibtex
