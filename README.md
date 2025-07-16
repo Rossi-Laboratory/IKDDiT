@@ -1,10 +1,11 @@
 
 # Implicit Knowledge Distillation Diffusion Transformer (IKDDiT)
-2025 ICCV Accept Paper !
-
 [Paper]() | [Project Page]() | [Vedio]() | [Code](https://github.com/Rossi-Laboratory/IKDDiT)
 
 This project implements IKDDiT: a Teacher–Student Diffusion Transformer based on an implicit discriminator, designed for photolithography overlay map generation with computational acceleration advantages.
+
+## 🎉 ICCV 2025 Accepted Paper
+This paper has been accepted for presentation at the **International Conference on Computer Vision (ICCV) 2025**.
 
 ## Key Features
 - **Implicit Discriminator**: During training, the Teacher DiT sees all image patches, while the Student DiT sees only visible patches (others are masked), with token alignment guided by an implicit discriminator.
