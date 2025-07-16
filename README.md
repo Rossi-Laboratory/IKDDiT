@@ -1,6 +1,6 @@
 
 # Implicit Knowledge Distillation Diffusion Transformer (IKDDiT)
-2025 ICCV Accept
+2025 ICCV Accept Paper !
 
 [Paper]() | [Project Page]() | [Vedio]() | [Code](https://github.com/Rossi-Laboratory/IKDDiT)
 
