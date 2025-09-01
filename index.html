@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IKDDiT: Implicit Knowledge Distillation Diffusion Transformer for Photolithography Overlay Map Generation">
+  <title>IKDDiT: Implicit Knowledge Distillation Diffusion Transformer for Photolithography Overlay Map Generation</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --brand: #1a237e;
+      --line: #e2e8f0;
+      --bg: #ffffff;
+      --card: #f8fafc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+      margin: 0; background: var(--bg); color: var(--ink); line-height: 1.65;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    header {
+      padding: 3rem 1rem; border-bottom: 1px solid var(--line); text-align: center;
+      background: linear-gradient(180deg, #eef2ff 0%, #ffffff 60%);
+    }
+    header h1 { margin: 0 0 .5rem; font-size: clamp(1.6rem, 2.5vw, 2.25rem); }
+    header p { margin: 0; color: var(--muted); }
+    main { max-width: 1080px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    nav.toc { background: #f5f7ff; border: 1px solid #dfe3ff; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
+    nav.toc ul { margin: .25rem 0 0; padding-left: 1.1rem; }
+    section { margin: 2.25rem 0; }
+    h2 {
+      color: var(--brand); margin: 0 0 .75rem; padding-left: .5rem; border-left: 4px solid var(--brand);
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+    }
+    .muted { color: var(--muted); font-size: .95rem; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.25rem; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 900px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+    figure { margin: 0 0 1.25rem; }
+    figure img { width: 100%; border: 1px solid var(--line); display: block; }
+    figcaption { font-size: .95rem; color: var(--muted); margin-top: .5rem; }
+    .scroll { max-height: 560px; overflow: auto; background: #fff; border: 1px solid var(--line); padding: .5rem; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; }
+    pre { background: #0b1020; color: #f8f8f2; padding: 1rem; border-radius: 8px; overflow: auto; }
+    footer { border-top: 1px solid var(--line); padding: 1rem; text-align: center; color: var(--muted); }
+    .meta { display: flex; gap: .75rem; flex-wrap: wrap; font-size: .95rem; color: var(--muted); }
+    .meta span { background: #eef2ff; border: 1px solid #dfe3ff; border-radius: 999px; padding: .25rem .6rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>IKDDiT: Implicit Knowledge Distillation Diffusion Transformer for Photolithography Overlay Map Generation</h1>
+    <div style="margin-top:1rem; font-size:1.05rem; line-height:1.6;">
+      <div style="display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;">
+        <span><strong>Yuan-Fu Yang<sup>1</sup></strong></span>
+        <span><strong>Hsiu-Hui Hsiao<sup>2</sup></strong></span>
+      </div>
+      <div style="margin-top:.5rem; font-style:italic;">
+        <sup>1</sup>National Yang Ming Chiao Tung University,&nbsp;
+        <sup>2</sup>National Taiwan University of Science and Technology
+      </div>
+      <div style="margin-top:0.75rem; font-size:1rem;">
+        <a href="#">Paper</a> |
+        <a href="#">Project Page</a> |
+        <a href="#">Video</a> |
+        <a href="https://github.com/Rossi-Laboratory/IKDDiT" target="_blank">Code</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="meta">
+      <span>Diffusion Transformer</span>
+      <span>Photolithography</span>
+      <span>Overlay Map Generation</span>
+      <span>Semiconductor Manufacturing</span>
+    </section>
+
+    <nav class="toc">
+      <strong>Contents</strong>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#method">Method Overview</a></li>
+        <li><a href="#results">Results & Figures</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#bibtex">BibTeX</a></li>
+      </ul>
+    </nav>
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <div class="card">
+        <p>
+          We present <strong>IKDDiT</strong>, an implicit knowledge distillation diffusion transformer for
+          <em>photolithography overlay map generation</em>. The framework leverages diffusion modeling with
+          distilled priors to capture complex spatial correlations across wafers and process steps, improving
+          overlay prediction fidelity and robustness. The figures below are extracted from both the main paper
+          and the supplementary for a consolidated, single-page reference.
+        </p>
+      </div>
+    </section>
+
+    <section id="method">
+      <h2>Method Overview</h2>
+      <div class="card grid two">
+        <div>
+          <p>
+            IKDDiT adopts a diffusion-based generator supervised by a distilled teacher signal that encodes
+            process-aware structural priors. The student model learns a compact representation that preserves
+            high-frequency overlay patterns while maintaining global consistency. The training objective follows
+            denoising score matching with an auxiliary distillation loss to align intermediate representations
+            between teacher and student.
+          </p>
+          <p class="muted">Note: Method summary is abbreviated for the project page. Please refer to the PDFs for full technical details.</p>
+        </div>
+        <div>
+          <figure>
+            <img src="https://drive.google.com/uc?export=view&id=1-y2aFgq6bVlYy9JFMa5Sufn54en4TZ2R" alt="Figure 1 (Main)">
+            <figcaption><strong>Figure 1 (Main).</strong> Overview diagram illustrating the IKDDiT pipeline and supervision signals.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results & Figures</h2>
+      <div class="card">
+        <h3>Main Paper Figures</h3>
+        <figure>
+          <img src="sandbox:/mnt/data/ikddit_fig2_p2.png" alt="Figure 2 (Main)">
+          <figcaption><strong>Figure 2 (Main).</strong> Comparative visualization and key module breakdown.</figcaption>
+        </figure>
+        <div class="grid two">
+          <figure>
+            <img src="sandbox:/mnt/data/ikddit_fig4_p4.png" alt="Figure 4 (Main)">
+            <figcaption><strong>Figure 4 (Main).</strong> Quantitative evaluation / benchmarks.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/ikddit_fig5_p6.png" alt="Figure 5 (Main)">
+            <figcaption><strong>Figure 5 (Main).</strong> Additional qualitative comparisons.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/ikddit_fig6_p6.png" alt="Figure 6 (Main)">
+            <figcaption><strong>Figure 6 (Main).</strong> Ablation or component analysis.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/ikddit_fig7_p7.png" alt="Figure 7 (Main)">
+            <figcaption><strong>Figure 7 (Main).</strong> Case study / layout-based analysis.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/ikddit_fig8_p7.png" alt="Figure 8 (Main)">
+            <figcaption><strong>Figure 8 (Main).</strong> Failure modes / qualitative edge cases.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1.25rem;">
+        <h3>Supplementary Figures</h3>
+        <div class="grid two">
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig5_p6.png" alt="Supplementary Figure 5">
+            <figcaption><strong>Supplementary Figure 5.</strong> Extended visualization / dataset details.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig6_p6.png" alt="Supplementary Figure 6">
+            <figcaption><strong>Supplementary Figure 6.</strong> Additional comparisons / stratified results.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig7_p7.png" alt="Supplementary Figure 7">
+            <figcaption><strong>Supplementary Figure 7.</strong> Resolution / scaling behavior.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig10_p10.png" alt="Supplementary Figure 10">
+            <figcaption><strong>Supplementary Figure 10.</strong> Sensitivity analyses.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig11_p11.png" alt="Supplementary Figure 11">
+            <figcaption><strong>Supplementary Figure 11.</strong> Error distribution / calibration.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig12_p11.png" alt="Supplementary Figure 12">
+            <figcaption><strong>Supplementary Figure 12.</strong> Robustness checks.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig13_p12.png" alt="Supplementary Figure 13">
+            <figcaption><strong>Supplementary Figure 13.</strong> Additional ablations.</figcaption>
+          </figure>
+          <figure>
+            <img src="sandbox:/mnt/data/supp_fig14_p12.png" alt="Supplementary Figure 14">
+            <figcaption><strong>Supplementary Figure 14.</strong> More qualitative samples.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>Resources</h2>
+      <div class="card">
+        <p>
+          <a href="sandbox:/mnt/data/IKDDiT.pdf" target="_blank">Main Paper (PDF)</a> ·
+          <a href="sandbox:/mnt/data/supplementary.pdf" target="_blank">Supplementary (PDF)</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="bibtex">
+      <h2>BibTeX</h2>
+      <div class="card">
+<pre>@inproceedings{IKDDiT2025,
+  author    = {Chen, Zhen-Qi and Yang, Yuan-Fu},
+  title     = {IKDDiT: Implicit Knowledge Distillation Diffusion Transformer for Photolithography Overlay Map Generation},
+  booktitle = {Proceedings of ...},
+  year      = {2025},
+  note      = {Project page}
+}</pre>
+        <p class="muted">Replace with the official venue and full bibliographic information once finalized.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 IKDDiT Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
