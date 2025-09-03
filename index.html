@@ -96,23 +96,37 @@
       <div class="card">
         <p>
           IKDDiT explores how diffusion models and knowledge distillation can improve overlay map generation
-          in semiconductor photolithography. This page offers a quick overview of the motivation, core design,
-          and representative results, with all figures consolidated from the paper and supplementary.
+          in semiconductor photolithography. This page provides an accessible overview of the motivation,
+          the core design, and representative results, with figures consolidated from the paper and
+          its supplementary material.
         </p>
+        <figure class="core-figure" style="margin-top:1rem;">
+          <img src="https://i.ibb.co/3yGWV453/2.png" alt="High-level overview of IKDDiT pipeline">
+        </figure>
       </div>
     </section>
 
     <section id="core">
       <h2>Core Idea</h2>
       <div class="card">
-        <p style="margin-top:0;">
-          A compact diffusion generator guided by a distilled teacher network transfers process-aware priors
-          for accurate and efficient overlay map synthesis.
+        <p>
+          Rather than relying on a heavy standalone model, IKDDiT uses a distilled teacher network to inject
+          semiconductor-specific priors into a compact diffusion generator. The result is a model that is
+          both efficient and accurate for overlay map synthesis.
+        </p>
+        <figcaption>
+          Architecture of the IKDDiT, which leverages a pre-trained text encoder
+          ε<sub>φ<sub>t</sub></sub> and an image encoder ε<sub>φ<sub>i</sub></sub>,
+          developed through unified contrastive learning, to generate conditional tokens.
+          These tokens are subsequently processed by the teacher and student DiT encoders
+          to perform a self-supervised discriminative process using D<sub>φ</sub>
+          within the joint embedding space.
+        </figcaption>
+        <p class="muted">
+          In short: a compact diffusion model enhanced by knowledge transfer for manufacturing data.
         </p>
         <figure class="core-figure" style="margin-top:1rem;">
-          <!-- 你目前在 Core Idea 放的是外部圖；保留你的連結 -->
           <img src="https://i.ibb.co/XfDLmbt0/1.png" alt="High-level overview of IKDDiT pipeline">
-          <figcaption><strong>Figure 1.</strong> High-level overview of the IKDDiT pipeline.</figcaption>
         </figure>
       </div>
     </section>
