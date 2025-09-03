@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+# Retry writing the updated HTML after the kernel reset.
+html = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,7 +26,7 @@
       background: linear-gradient(180deg, #eef2ff 0%, #ffffff 60%);
     }
     header h1 { margin: 0 0 .5rem; font-size: clamp(1.6rem, 2.5vw, 2.25rem); }
-    header p { margin: 0; color: var(--muted); }
+    header p, header div { margin: 0; color: var(--muted); }
     main { max-width: 1080px; margin: 0 auto; padding: 2rem 1rem 4rem; }
     nav.toc { background: #f5f7ff; border: 1px solid #dfe3ff; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
     nav.toc ul { margin: .25rem 0 0; padding-left: 1.1rem; }
@@ -41,8 +42,6 @@
     figure { margin: 0 0 1.25rem; }
     figure img { width: 100%; border: 1px solid var(--line); display: block; }
     figcaption { font-size: .95rem; color: var(--muted); margin-top: .5rem; }
-    .scroll { max-height: 560px; overflow: auto; background: #fff; border: 1px solid var(--line); padding: .5rem; }
-    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; }
     pre { background: #0b1020; color: #f8f8f2; padding: 1rem; border-radius: 8px; overflow: auto; }
     footer { border-top: 1px solid var(--line); padding: 1rem; text-align: center; color: var(--muted); }
     .meta { display: flex; gap: .75rem; flex-wrap: wrap; font-size: .95rem; color: var(--muted); }
@@ -69,6 +68,7 @@
       </div>
     </div>
   </header>
+
   <main>
     <section class="meta">
       <span>Diffusion Transformer</span>
@@ -80,111 +80,109 @@
     <nav class="toc">
       <strong>Contents</strong>
       <ul>
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#method">Method Overview</a></li>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#core">Core Idea</a></li>
         <li><a href="#results">Results & Figures</a></li>
         <li><a href="#resources">Resources</a></li>
         <li><a href="#bibtex">BibTeX</a></li>
       </ul>
     </nav>
 
-<section id="intro">
-  <h2>Introduction</h2>
-  <div class="card">
-    <p>
-      IKDDiT is a research project that explores how diffusion models and knowledge distillation
-      can be applied to improve overlay map generation in semiconductor photolithography.
-      This page provides a quick overview of the motivation, approach, and results with visual figures
-      taken from the main paper and supplementary materials.
-    </p>
-  </div>
-</section>
+    <section id="intro">
+      <h2>Introduction</h2>
+      <div class="card">
+        <p>
+          IKDDiT explores how diffusion models and knowledge distillation can improve overlay map generation
+          in semiconductor photolithography. This page provides an accessible overview of the motivation,
+          the core design, and representative results, with figures consolidated from the paper and
+          its supplementary material.
+        </p>
+      </div>
+    </section>
 
-<section id="core">
-  <h2>Core Idea</h2>
-  <div class="card grid two">
-    <div>
-      <p>
-        Instead of training a large diffusion model from scratch, IKDDiT leverages a distilled teacher
-        network that embeds semiconductor-specific knowledge. The student model then learns to generate
-        overlay maps with both efficiency and fidelity, combining the strengths of diffusion sampling
-        and knowledge transfer.
-      </p>
-      <p class="muted">
-        In short: a compact diffusion model enhanced by knowledge distillation for manufacturing data.
-      </p>
-    </div>
-    <div>
-      <figure>
-        <img src="sandbox:/mnt/data/ikddit_fig1_p1.png" alt="Pipeline Figure">
-        <figcaption><strong>Figure 1.</strong> High-level overview of the IKDDiT pipeline.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+    <section id="core">
+      <h2>Core Idea</h2>
+      <div class="card grid two">
+        <div>
+          <p>
+            Rather than relying on a heavy standalone model, IKDDiT uses a distilled teacher network to inject
+            semiconductor-specific priors into a compact diffusion generator. The result is a model that is
+            both efficient and accurate for overlay map synthesis.
+          </p>
+          <p class="muted">
+            In short: a compact diffusion model enhanced by knowledge transfer for manufacturing data.
+          </p>
+        </div>
+        <div>
+          <figure>
+            <img src="sandbox:/mnt/data/ikddit_fig1_p1.png" alt="Pipeline Figure">
+            <figcaption><strong>Figure 1.</strong> High-level overview of the IKDDiT pipeline.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-<section id="results">
-  <h2>Results & Figures</h2>
-  <div class="card grid two">
-    <figure>
-      <img src="sandbox:/mnt/data/ikddit_fig2_p2.png" alt="Figure 2">
-      <figcaption><strong>Figure 2.</strong> Comparative visualization and key modules.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/ikddit_fig4_p4.png" alt="Figure 3">
-      <figcaption><strong>Figure 3.</strong> Quantitative evaluation benchmarks.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/ikddit_fig5_p6.png" alt="Figure 4">
-      <figcaption><strong>Figure 4.</strong> Additional qualitative comparisons.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/ikddit_fig6_p6.png" alt="Figure 5">
-      <figcaption><strong>Figure 5.</strong> Ablation / component analysis.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/ikddit_fig7_p7.png" alt="Figure 6">
-      <figcaption><strong>Figure 6.</strong> Case study / layout-based analysis.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/ikddit_fig8_p7.png" alt="Figure 7">
-      <figcaption><strong>Figure 7.</strong> Failure modes and edge cases.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig5_p6.png" alt="Figure 8">
-      <figcaption><strong>Figure 8.</strong> Extended dataset visualizations.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig6_p6.png" alt="Figure 9">
-      <figcaption><strong>Figure 9.</strong> Stratified results and comparisons.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig7_p7.png" alt="Figure 10">
-      <figcaption><strong>Figure 10.</strong> Resolution scaling behavior.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig10_p10.png" alt="Figure 11">
-      <figcaption><strong>Figure 11.</strong> Sensitivity analyses.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig11_p11.png" alt="Figure 12">
-      <figcaption><strong>Figure 12.</strong> Error distribution and calibration.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig12_p11.png" alt="Figure 13">
-      <figcaption><strong>Figure 13.</strong> Robustness checks.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig13_p12.png" alt="Figure 14">
-      <figcaption><strong>Figure 14.</strong> Additional ablations.</figcaption>
-    </figure>
-    <figure>
-      <img src="sandbox:/mnt/data/supp_fig14_p12.png" alt="Figure 15">
-      <figcaption><strong>Figure 15.</strong> More qualitative samples.</figcaption>
-    </figure>
-  </div>
-</section>
-
+    <section id="results">
+      <h2>Results & Figures</h2>
+      <div class="card grid two">
+        <figure>
+          <img src="sandbox:/mnt/data/ikddit_fig2_p2.png" alt="Figure 2">
+          <figcaption><strong>Figure 2.</strong> Comparative visualization and key modules.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/ikddit_fig4_p4.png" alt="Figure 3">
+          <figcaption><strong>Figure 3.</strong> Quantitative evaluation benchmarks.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/ikddit_fig5_p6.png" alt="Figure 4">
+          <figcaption><strong>Figure 4.</strong> Additional qualitative comparisons.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/ikddit_fig6_p6.png" alt="Figure 5">
+          <figcaption><strong>Figure 5.</strong> Ablation / component analysis.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/ikddit_fig7_p7.png" alt="Figure 6">
+          <figcaption><strong>Figure 6.</strong> Case study / layout-based analysis.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/ikddit_fig8_p7.png" alt="Figure 7">
+          <figcaption><strong>Figure 7.</strong> Failure modes and edge cases.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig5_p6.png" alt="Figure 8">
+          <figcaption><strong>Figure 8.</strong> Extended dataset visualizations.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig6_p6.png" alt="Figure 9">
+          <figcaption><strong>Figure 9.</strong> Stratified results and comparisons.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig7_p7.png" alt="Figure 10">
+          <figcaption><strong>Figure 10.</strong> Resolution scaling behavior.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig10_p10.png" alt="Figure 11">
+          <figcaption><strong>Figure 11.</strong> Sensitivity analyses.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig11_p11.png" alt="Figure 12">
+          <figcaption><strong>Figure 12.</strong> Error distribution and calibration.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig12_p11.png" alt="Figure 13">
+          <figcaption><strong>Figure 13.</strong> Robustness checks.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig13_p12.png" alt="Figure 14">
+          <figcaption><strong>Figure 14.</strong> Additional ablations.</figcaption>
+        </figure>
+        <figure>
+          <img src="sandbox:/mnt/data/supp_fig14_p12.png" alt="Figure 15">
+          <figcaption><strong>Figure 15.</strong> More qualitative samples.</figcaption>
+        </figure>
+      </div>
+    </section>
 
     <section id="resources">
       <h2>Resources</h2>
@@ -210,9 +208,17 @@
       </div>
     </section>
   </main>
+
   <footer>
     <p>&copy; 2025 IKDDiT Project. All rights reserved.</p>
   </footer>
 </body>
 </html>
+"""
+path = "/mnt/data/ikddit_project_page_v2.html"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(html)
+
+path
+
 
