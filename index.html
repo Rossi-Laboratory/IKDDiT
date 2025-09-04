@@ -123,6 +123,7 @@
       <ul>
         <li><a href="#intro">Introduction</a></li>
         <li><a href="#core">Core Idea</a></li>
+        <li><a href="#Architecture">Architecture</a></li>
         <li><a href="#Training">Training Efficiency</a></li>
         <li><a href="#results">Results</a></li>
         <li><a href="#resources">Resources</a></li>
@@ -170,6 +171,23 @@
         </figure>
       </div>
     </section>
+
+    <section id="Architecture"> 
+      <h2>Architecture</h2>
+      <div class="card">
+        <p>
+          Architecture of the <strong>IKDDiT</strong>, which utilizes pre-trained text encoder 
+          ε<sub>φ<sub>t</sub></sub> and image encoder ε<sub>φ<sub>i</sub></sub>, developed 
+          through unified contrastive learning, to generate conditional tokens. These tokens are 
+          then processed through the teacher and student DiT encoders to perform a self-supervised 
+          discriminative process using D<sub>φ</sub> within the joint embedding space.
+        </p>
+        <figure class="core-figure" style="margin-top:1rem; text-align:center;">
+          <img src="https://i.ibb.co/HLJ4Lhkv/Architecture.png" alt="Architecture of IKDDiT" style="width:50%; height:auto;">
+        </figure>
+      </div>
+    </section>
+
 
     <section id="Training">
       <h2>Training efficiency</h2>
