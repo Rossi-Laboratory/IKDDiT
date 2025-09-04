@@ -85,6 +85,7 @@
       <ul>
         <li><a href="#intro">Introduction</a></li>
         <li><a href="#core">Core Idea</a></li>
+        <li><a href="#Training">Training Efficiency</a></li>
         <li><a href="#results">Results</a></li>
         <li><a href="#resources">Resources</a></li>
         <li><a href="#bibtex">BibTeX</a></li>
@@ -130,6 +131,26 @@
         </figure>
       </div>
     </section>
+    <section id="Training">
+      <h2>Training efficiency</h2>
+      <div class="card">
+        <p>
+          To evaluate the convergence behavior of our IKDDiT model, we compare FID scores across 
+          training stages against state-of-the-art baselines. All models, in the XL configuration,
+          are trained with a batch size of 64 for up to 578.1k iterations. As shown in Figure 5, 
+          IKDDiT exhibits consistently faster convergence. At 250k iterations, IKDDiT reaches an 
+          FID of 11.6, already surpassing DiT, MDT, and MaskDiT, which only achieve FID scores of 
+          14.1, 12.2, and 11.9, respectively, after 500k iterations. Furthermore, IKDDiT attains 
+          an FID of 6.8 at 500k iterations, outperforming all competing methods. These results 
+          demonstrate that IKDDiT converges nearly twice as fast, underscoring the effectiveness 
+          of incorporating self-supervised discrimination into DiT training.
+        </p>
+        <figure class="core-figure" style="margin-top:1rem;">
+          <img src="https://i.ibb.co/zTMTtHxd/3.png" alt="High-level overview of IKDDiT pipeline">
+        </figure>
+      </div>
+    </section>
+
 
     <section id="results">
       <h2>Results</h2>
@@ -148,102 +169,6 @@
           <div class="figdesc">Figure 3 — Quantitative evaluation benchmarks.</div>
           <div class="figwrap">
             <img src="sandbox:/mnt/data/ikddit_fig4_p4.png" alt="Figure 3">
-          </div>
-        </div>
-
-        <!-- Figure 4 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 4 — Additional qualitative comparisons.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/ikddit_fig5_p6.png" alt="Figure 4">
-          </div>
-        </div>
-
-        <!-- Figure 5 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 5 — Ablation and component analysis.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/ikddit_fig6_p6.png" alt="Figure 5">
-          </div>
-        </div>
-
-        <!-- Figure 6 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 6 — Case study and layout-based analysis.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/ikddit_fig7_p7.png" alt="Figure 6">
-          </div>
-        </div>
-
-        <!-- Figure 7 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 7 — Failure modes and edge cases.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/ikddit_fig8_p7.png" alt="Figure 7">
-          </div>
-        </div>
-
-        <!-- Figure 8 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 8 — Extended dataset visualizations.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig5_p6.png" alt="Figure 8">
-          </div>
-        </div>
-
-        <!-- Figure 9 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 9 — Stratified results and comparisons.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig6_p6.png" alt="Figure 9">
-          </div>
-        </div>
-
-        <!-- Figure 10 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 10 — Resolution scaling behavior.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig7_p7.png" alt="Figure 10">
-          </div>
-        </div>
-
-        <!-- Figure 11 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 11 — Sensitivity analyses.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig10_p10.png" alt="Figure 11">
-          </div>
-        </div>
-
-        <!-- Figure 12 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 12 — Error distribution and calibration.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig11_p11.png" alt="Figure 12">
-          </div>
-        </div>
-
-        <!-- Figure 13 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 13 — Robustness checks.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig12_p11.png" alt="Figure 13">
-          </div>
-        </div>
-
-        <!-- Figure 14 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 14 — Additional ablations.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig13_p12.png" alt="Figure 14">
-          </div>
-        </div>
-
-        <!-- Figure 15 -->
-        <div class="figblock">
-          <div class="figdesc">Figure 15 — More qualitative samples.</div>
-          <div class="figwrap">
-            <img src="sandbox:/mnt/data/supp_fig14_p12.png" alt="Figure 15">
           </div>
         </div>
       </div>
