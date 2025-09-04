@@ -21,11 +21,40 @@
     }
     a { color: var(--brand); text-decoration: none; }
     header {
-      padding: 3rem 1rem; border-bottom: 1px solid var(--line); text-align: center;
+      padding: 3rem 1rem;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
       background: linear-gradient(180deg, #eef2ff 0%, #ffffff 60%);
     }
-    header h1 { margin: 0 0 .5rem; font-size: clamp(1.6rem, 2.5vw, 2.25rem); }
-    header p, header div { margin: 0; color: var(--muted); }
+    header h1 { margin:0; font-size:clamp(1.8rem, 3vw, 2.5rem); font-weight:700; }
+    header h2 { margin:.25rem 0 1rem; font-size:clamp(1.2rem, 2vw, 1.75rem); font-weight:400; color:var(--muted); }
+
+    /* 黑色 pill button */
+    .button-links {
+      margin-top:1rem;
+      display:flex;
+      justify-content:center;
+      gap:0.75rem;
+      flex-wrap:wrap;
+    }
+    .button-links a {
+      padding:0.45rem 1rem;
+      border-radius:999px;
+      background:#0f172a;
+      color:#fff;
+      font-size:0.95rem;
+      font-weight:500;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      gap:0.4rem;
+      transition:background 0.25s ease, transform 0.2s ease;
+    }
+    .button-links a:hover {
+      background:#333c52;
+      transform:translateY(-2px);
+    }
+
     main { max-width: 1080px; margin: 0 auto; padding: 2rem 1rem 4rem; }
     nav.toc { background: #f5f7ff; border: 1px solid #dfe3ff; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem; }
     nav.toc ul { margin: .25rem 0 0; padding-left: 1.1rem; }
@@ -53,22 +82,31 @@
 </head>
 <body>
   <header>
-    <h1>Photolithography Overlay Map Generation with Implicit Knowledge Distillation Diffusion Transformer</h1>
-    <div style="margin-top:1rem; font-size:1.05rem; line-height:1.6;">
-      <div style="display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;">
-        <span><strong>Yuan-Fu Yang<sup>1</sup></strong></span>
-        <span><strong>Hsiu-Hui Hsiao<sup>2</sup></strong></span>
-      </div>
-      <div style="margin-top:.5rem; font-style:italic;">
+    <!-- Title Row: Logo + Text -->
+    <div style="display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <img src="https://i.ibb.co/9k7ZK757/logo.png" alt="IKDDiT Logo" style="height:60px; width:auto;">
+      <h1>IKDDiT</h1>
+    </div>
+
+    <!-- Subtitle -->
+    <h2>Implicit Knowledge Distillation Diffusion Transformer for Photolithography Overlay Map Generation</h2>
+
+    <!-- Authors -->
+    <div style="margin:1rem 0; font-size:1rem; line-height:1.5;">
+      <span><strong>Yuan-Fu Yang<sup>1</sup></strong></span> ·
+      <span><strong>Hsiu-Hui Hsiao<sup>2</sup></strong></span>
+      <div style="margin-top:.5rem; font-style:italic; color:var(--muted);">
         <sup>1</sup>National Yang Ming Chiao Tung University,&nbsp;
         <sup>2</sup>National Taiwan University of Science and Technology
       </div>
-      <div style="margin-top:0.75rem; font-size:1rem;">
-        <a href="#">Paper</a> |
-        <a href="#">Project Page</a> |
-        <a href="#">Video</a> |
-        <a href="https://github.com/Rossi-Laboratory/IKDDiT" target="_blank">Code</a>
-      </div>
+    </div>
+
+    <!-- Links with icons -->
+    <div class="button-links">
+      <a href="#">📄 Paper</a>
+      <a href="#">🌐 Project Page</a>
+      <a href="#">🎥 Video</a>
+      <a href="https://github.com/Rossi-Laboratory/IKDDiT" target="_blank">💻 Code</a>
     </div>
   </header>
 
@@ -105,7 +143,6 @@
         <figure class="core-figure" style="margin-top:1rem; text-align:center;">
           <img src="https://i.ibb.co/XfDLmbt0/1.png" alt="High-level overview of IKDDiT pipeline" style="width:70%; height:auto;">
         </figure>
-
       </div>
     </section>
 
@@ -133,6 +170,7 @@
         </figure>
       </div>
     </section>
+
     <section id="Training">
       <h2>Training efficiency</h2>
       <div class="card">
@@ -157,7 +195,6 @@
       <h2>Results</h2>
     
       <div class="grid two">
-        <!-- Figure 2 -->
         <div class="figblock">
           <div class="figdesc">Scalability.</div>
           <div class="figwrap">
@@ -165,7 +202,6 @@
           </div>
         </div>
     
-        <!-- Figure 3 -->
         <div class="figblock">
           <div class="figdesc">Model Scaling on Training Loss.</div>
           <div class="figwrap">
